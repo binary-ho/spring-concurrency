@@ -16,7 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class OptimisticStockServiceTest {
+class OptimisticStockFasadeeTest {
 
     public final long STOCK_QUANTITY = 100L;
     public final long PRODUCT_ID = 1L;
