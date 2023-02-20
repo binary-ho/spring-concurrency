@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Version;
 
 @Entity
 public class Stock {
@@ -13,6 +14,10 @@ public class Stock {
     private Long id;
     private Long productId;
     private Long quantity;
+
+    /* Optimistic Lock을 위한 버전 필드 */
+    @Version
+    private Long version;
 
     public Stock() {
 
