@@ -16,7 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class OptimisticStockFasadeeTest {
+class OptimisticStockFacadeeTest {
 
     public final long STOCK_QUANTITY = 100L;
     public final long PRODUCT_ID = 1L;
@@ -27,6 +27,7 @@ class OptimisticStockFasadeeTest {
 
     @BeforeEach
     public void before() {
+        stockRepository.deleteAll();
         Stock stock = new Stock(PRODUCT_ID, STOCK_QUANTITY);
         stockRepository.saveAndFlush(stock);
     }

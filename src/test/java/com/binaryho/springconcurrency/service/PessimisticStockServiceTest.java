@@ -26,6 +26,7 @@ class PessimisticStockServiceTest {
 
     @BeforeEach
     public void before() {
+        stockRepository.deleteAll();
         Stock stock = new Stock(PRODUCT_ID, STOCK_QUANTITY);
         stockRepository.saveAndFlush(stock);
     }

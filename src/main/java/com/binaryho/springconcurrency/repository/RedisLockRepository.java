@@ -3,6 +3,7 @@ package com.binaryho.springconcurrency.repository;
 import java.time.Duration;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 @Component
 public class RedisLockRepository {
