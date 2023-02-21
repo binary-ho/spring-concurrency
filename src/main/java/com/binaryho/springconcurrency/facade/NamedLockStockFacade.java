@@ -3,9 +3,10 @@ package com.binaryho.springconcurrency.facade;
 import com.binaryho.springconcurrency.repository.LockRepository;
 import com.binaryho.springconcurrency.service.OptimisticLockStockService;
 import com.binaryho.springconcurrency.service.StockService;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-@Service
+@Component
 public class NamedLockStockFacade {
 
     private final LockRepository lockRepository;

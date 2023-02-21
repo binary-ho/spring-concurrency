@@ -1,4 +1,4 @@
-package com.binaryho.springconcurrency.service;
+package com.binaryho.springconcurrency.facade;
 
 
 import static org.assertj.core.api.Assertions.assertThat;

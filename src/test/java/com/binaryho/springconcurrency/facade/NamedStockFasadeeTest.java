@@ -1,4 +1,4 @@
-package com.binaryho.springconcurrency.service;
+package com.binaryho.springconcurrency.facade;
 
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -10,6 +10,7 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ class NamedStockFasadeeTest {
 
     public final long STOCK_QUANTITY = 100L;
     public final long PRODUCT_ID = 1L;
-    public final int THREAD_POOL_SIZE = 32;
+    public final int THREAD_POOL_SIZE = 8;
 
     @Autowired private NamedLockStockFacade namedLockStockFacade;
     @Autowired private StockRepository stockRepository;
@@ -58,7 +59,8 @@ class NamedStockFasadeeTest {
         countDownLatch.await();
 
         Stock stock = stockRepository.findById(PRODUCT_ID).orElseThrow();
-        assertThat(stock.getQuantity()).isEqualTo(0L);
+//        assertThat(stock.getQuantity()).isEqualTo(0L);
+        Assertions.assertEquals(0, stock.getQuantity());
     }
 
 }

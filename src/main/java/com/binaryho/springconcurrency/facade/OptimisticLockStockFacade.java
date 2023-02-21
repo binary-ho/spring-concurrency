@@ -1,9 +1,10 @@
 package com.binaryho.springconcurrency.facade;
 
 import com.binaryho.springconcurrency.service.OptimisticLockStockService;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-@Service
+@Component
 public class OptimisticLockStockFacade {
 
     private final OptimisticLockStockService optimisticLockStockService;
