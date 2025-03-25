@@ -1,4 +1,5 @@
 rootProject.name = 'spring-concurrency'
 include 'dblock'
 include 'redisson-lock'
-
+include 'single-instance'
+include 'coupon-1'

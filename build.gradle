@@ -1,57 +1,23 @@
 buildscript {
-	ext {
-		springBootVersion = '2.7.8'
-	}
-	repositories {
-		mavenCentral()
-	}
-	dependencies {
-		classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
-		classpath "io.spring.gradle:dependency-management-plugin:1.0.11.RELEASE"
-	}
+    ext {
+        springBootVersion = '2.7.8'
+        javaVersion = '11'
+    }
+}
+
+plugins {
+    id 'org.springframework.boot' version '2.7.8' apply false
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE' apply false
+}
+
+allprojects {
+    group = 'com.binaryho'
+    version = '0.0.1-SNAPSHOT'
+
+    repositories {
+        mavenCentral()
+    }
 }
 
 subprojects {
-	apply plugin: 'java'
-	apply plugin: 'org.springframework.boot'
-	apply plugin: 'io.spring.dependency-management'
-
-	group = 'com.binaryho'
-	version = '0.0.1-SNAPSHOT'
-
-	configurations {
-		compileOnly {
-			extendsFrom annotationProcessor
-		}
-	}
-
-	java {
-		sourceCompatibility = '17'
-	}
-
-	repositories {
-		mavenCentral()
-	}
-
-	dependencies {
-		implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-		implementation 'org.springframework.boot:spring-boot-starter-data-redis'
-		implementation 'org.springframework.boot:spring-boot-starter-web'
-
-		implementation group: 'org.apache.commons', name: 'commons-pool2', version: '2.6.2'
-		implementation group: 'redis.clients', name: 'jedis', version: '2.9.3'
-
-		implementation 'org.redisson:redisson-spring-boot-starter:3.17.0'
-		implementation 'com.mysql:mysql-connector-j'
-
-		testImplementation 'org.springframework.boot:spring-boot-starter-test'
-
-		compileOnly 'org.projectlombok:lombok'
-		annotationProcessor 'org.projectlombok:lombok'
-	}
-
-	tasks.named('test') {
-		useJUnitPlatform()
-	}
 }
-
