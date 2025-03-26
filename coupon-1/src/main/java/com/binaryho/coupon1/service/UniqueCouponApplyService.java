@@ -1,28 +1,27 @@
 package com.binaryho.coupon1.service;
 
 import com.binaryho.coupon1.domain.Coupon;
-import com.binaryho.coupon1.repository.CouponCountRepository;
+import com.binaryho.coupon1.repository.AppliedUserRepository;
 import com.binaryho.coupon1.repository.CouponRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ApplyService {
+public class UniqueCouponApplyService {
 
     private final CouponRepository couponRepository;
-    private final CouponCountRepository couponCountRepository;
+    private final AppliedUserRepository appliedUserRepository;
 
-    public ApplyService(CouponRepository couponRepository,
-        CouponCountRepository couponCountRepository) {
+    public UniqueCouponApplyService(CouponRepository couponRepository,
+        AppliedUserRepository appliedUserRepository) {
         this.couponRepository = couponRepository;
-        this.couponCountRepository = couponCountRepository;
+        this.appliedUserRepository = appliedUserRepository;
     }
 
     public void apply(Long userId) {
-        Long count = couponCountRepository.increase();
-        if (count > 100) {
+        boolean add = appliedUserRepository.add(userId);
+        if (!add) {
             return;
         }
-
         couponRepository.save(new Coupon(userId));
     }
 }
